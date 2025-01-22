@@ -4,32 +4,19 @@ Color primary = const Color(0xFF687daf);
 
 class AppStyle {
   static Color bgColor = const Color(0xFFeeedf2);
-  static Color primaryColor = primary;
+  static Color primaryColor = const Color(0xFF161C24);
   static Color textColor = const Color(0xFF3b3b3b);
   static Color ticketBlue = const Color(0xFF526799);
 
   static TextStyle textStyle = TextStyle(
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: textColor,
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat Medium',
   );
   static TextStyle headlineStyle1 = TextStyle(
-      fontFamily: 'Montserrat',
-      fontSize: 26,
-      fontWeight: FontWeight.bold,
-      color: textColor
+      fontFamily: 'Montserrat SemiBold',
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
   );
-  static TextStyle headlineStyle2 = TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 21,
-    fontWeight: FontWeight.bold,
-    color: textColor,
-  );
-  static TextStyle headlineStyle3 = const TextStyle(
-    fontFamily: 'Montserrat',
-    fontSize: 17,
-    fontWeight: FontWeight.w500,
 
-  );
 }
