@@ -1,11 +1,31 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/student.dart';
 
+
 class StudentViewModel extends StateNotifier<List<Student>> {
+  int _currentIndex = 0;
+
   StudentViewModel() : super([]);
 
+  int get currentIndex => _currentIndex;
+
+  Student get getCurrentStudent {
+    if (state.isEmpty) {
+      throw StateError("Список студентів порожній");
+    }
+    return state[_currentIndex];
+  }
+
+  void showNextCard() {
+    if (state.isNotEmpty) {
+      _currentIndex = (_currentIndex + 1) % state.length;
+
+      // Оновлюємо стан, щоб Riverpod сповістив про зміни
+      state = [...state];
+    }
+  }
+
   void fetchStudents() {
-    // Імітація отримання даних із сервера
     state = [
       Student.fromJson({
         "last_name": "Коваленко",

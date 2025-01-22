@@ -1,9 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:ticket_app/view_models/student_view.dart';
 import '../providers/providers.dart';
-import '../theme/style.dart';
 
 class StudentCard extends ConsumerWidget {
+  const StudentCard({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final studentViewModel = ref.watch(studentProvider.notifier);
+    final students = ref.watch(studentProvider);
+
+    if (students.isEmpty) {
+      return Center(
+        child: Text(
+          "Список студентів порожній",
+          style: theme.textTheme.bodyMedium,
+        ),
+      );
+    }
+
+    final currentStudent = studentViewModel.getCurrentStudent;
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Card(
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: 2,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${currentStudent.lastName} ${currentStudent.firstName} ${currentStudent.middleName}",
+                  style: theme.textTheme.titleLarge,
+                ),
+                const SizedBox(height: 8),
+                Text("Email: ${currentStudent.emailAddress}", style: theme.textTheme.bodyMedium),
+                Text("Phone: ${currentStudent.contactPhones}", style: theme.textTheme.bodyMedium),
+                Text("Date of birth: ${currentStudent.dateOfBirth.toLocal()}", style: theme.textTheme.bodyMedium),
+                Text("Institute Name: ${currentStudent.instituteName}", style: theme.textTheme.bodyMedium),
+                Text("Speciality Name: ${currentStudent.specialityName}", style: theme.textTheme.bodyMedium),
+                Text("Group Name: ${currentStudent.groupName}", style: theme.textTheme.bodyMedium),
+                Text("Course: ${currentStudent.course}", style: theme.textTheme.bodyMedium),
+                Text("Semester: ${currentStudent.semester}", style: theme.textTheme.bodyMedium),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () {
+            ref.read(studentProvider.notifier).showNextCard();
+          },
+          child: const Text("Наступна картка"),
+        ),
+      ],
+    );
+  }
+}
+
+
+
+/*class StudentCard extends ConsumerWidget {
   const StudentCard({super.key});
 
   @override
@@ -49,8 +114,7 @@ class StudentCard extends ConsumerWidget {
       },
     );
   }
-}
-
+}*/
 
 /*
 class StudentCard extends ConsumerWidget {
