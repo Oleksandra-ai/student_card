@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/student.dart';
+import '../../models/student.dart';
 
 
 class StudentViewModel extends StateNotifier<List<Student>> {
