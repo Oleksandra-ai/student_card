@@ -46,7 +46,7 @@ class _MyAppState extends ConsumerState<MyApp> {
             onPressed: () {
               ref.read(studentProvider.notifier).showNextCard();
             },
-            icon: const Icon(Icons.person), // Іконка профілю зліва
+            icon: const Icon(Icons.person),
           ),
           actions: [
             Container(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ticket_app/theme/style.dart';
-// import 'package:ticket_app/view_models/student_view.dart';
 import '../providers/providers.dart';
 
 class StudentCard extends ConsumerWidget {
